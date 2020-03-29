@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { debounce, memoize, reduce, startsWith } from 'lodash'
@@ -104,7 +105,7 @@ class PhoneInput extends React.PureComponent {
     preserveOrder: [],
     renderStringAsFlag: '',
 
-    onEnterKeyPress: () => { },
+    onEnterKeyPress: () => {},
 
     keys: {
       UP: 38,
@@ -139,10 +140,10 @@ class PhoneInput extends React.PureComponent {
       props.preferredCountries.length === 0
         ? []
         : this.getFilteredCountryList(
-          props.preferredCountries,
-          filteredCountries,
-          props.preserveOrder.includes('preferredCountries')
-        )
+            props.preferredCountries,
+            filteredCountries,
+            props.preserveOrder.includes('preferredCountries')
+          )
 
     const inputNumber = props.value.replace(/[^0-9\.]+/g, '') || ''
 
@@ -168,9 +169,9 @@ class PhoneInput extends React.PureComponent {
       inputNumber === '' && countryGuess === 0
         ? ''
         : this.formatNumber(
-          (props.disableCountryCode ? '' : dialCode) + inputNumber.replace(/\D/g, ''),
-          countryGuess.name ? countryGuess.format : undefined
-        )
+            (props.disableCountryCode ? '' : dialCode) + inputNumber.replace(/\D/g, ''),
+            countryGuess.name ? countryGuess.format : undefined
+          )
 
     const highlightCountryIndex = filteredCountries.findIndex(o => o == countryGuess)
 
@@ -201,7 +202,7 @@ class PhoneInput extends React.PureComponent {
     }
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.defaultCountry && nextProps.defaultCountry !== this.state.defaultCountry) {
       this.updateDefaultCountry(nextProps.defaultCountry)
     } else if (nextProps.value !== this.state.formattedNumber) {
@@ -873,15 +874,15 @@ class PhoneInput extends React.PureComponent {
     let searchedCountries =
       enableSearchField && sanitizedSearchValue
         ? // using [...new Set()] here to get rid of duplicates
-        [
-          ...new Set(
-            allCountries.filter(({ name, localName, iso2, dialCode }) =>
-              [`${name}`, `${localName}`, `${iso2}`, `+${dialCode}`].some(field =>
-                field.toLowerCase().includes(sanitizedSearchValue)
+          [
+            ...new Set(
+              allCountries.filter(({ name, localName, iso2, dialCode }) =>
+                [`${name}`, `${localName}`, `${iso2}`, `+${dialCode}`].some(field =>
+                  field.toLowerCase().includes(sanitizedSearchValue)
+                )
               )
-            )
-          ),
-        ]
+            ),
+          ]
         : allCountries
     if (this.props.disableAreaCodes) searchedCountries = this.deleteAreaCodes(searchedCountries)
     return searchedCountries
@@ -922,7 +923,7 @@ class PhoneInput extends React.PureComponent {
             data-country-code={country.iso2}
             onClick={() => this.handleFlagItemClick(country)}
           >
-            <img alt="" className="flag-dropdown-image" src={`./country-flag/${country.iso2}.jpg`} />
+            <img className="flag-dropdown-image" src={require(`./country-flag/${country.iso2}.jpg`)} />
 
             <span className="country-name">{this.getDropdownCountryName(country)}</span>
             <span className="dial-code">{'+' + country.dialCode}</span>
@@ -981,10 +982,10 @@ class PhoneInput extends React.PureComponent {
         {countryDropdownList.length > 0 ? (
           countryDropdownList
         ) : (
-            <li className="no-entries-message">
-              <span>No entries to show.</span>
-            </li>
-          )}
+          <li className="no-entries-message">
+            <span>No entries to show.</span>
+          </li>
+        )}
       </ul>
     )
   }
@@ -1038,16 +1039,16 @@ class PhoneInput extends React.PureComponent {
           {renderStringAsFlag ? (
             <div className="selected-flag">{renderStringAsFlag}</div>
           ) : (
-              <div
-                onClick={disableDropdown ? undefined : this.handleFlagDropdownClick}
-                className="selected-flag"
-                title={selectedCountry ? `${selectedCountry.name}: + ${selectedCountry.dialCode}` : ''}
-              >
-                <img alt="" src={`./country-flag/${selectedCountry && selectedCountry.iso2}.jpg`} />
+            <div
+              onClick={disableDropdown ? undefined : this.handleFlagDropdownClick}
+              className="selected-flag"
+              title={selectedCountry ? `${selectedCountry.name}: + ${selectedCountry.dialCode}` : ''}
+            >
+              <img src={require(`./country-flag/${selectedCountry && selectedCountry.iso2}.jpg`)} />
 
-                {<div className={arrowClasses}></div>}
-              </div>
-            )}
+              {<div className={arrowClasses}></div>}
+            </div>
+          )}
 
           {showDropdown && this.getCountryDropdownList()}
         </div>

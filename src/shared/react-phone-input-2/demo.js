@@ -146,7 +146,7 @@ class Demo extends React.PureComponent {
           />
           <button
             onClick={() => {
-              if (this.state.defaultCountry === 'br') {
+              if (this.state.defaultCountry == 'br') {
                 this.setState({ defaultCountry: 'it' })
               } else {
                 this.setState({ defaultCountry: 'br' })
