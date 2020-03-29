@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-import Component from "./component.tsx"
+import Input from "./input.tsx"
 
 function App() {
 
 
   return (
     <div className="App">
-      <Component />
+      <Input />
     </div>
   );
 }

@@ -9,7 +9,7 @@ interface IComponentState {
 	isPhoneNumberValid: boolean;
 }
 
-export default class App extends React.Component<IComponentState> {
+export default class Input extends React.Component<IComponentState> {
 	state: IComponentState = {
 		phone: '',
 		phoneNumberErrorMessage: null,
