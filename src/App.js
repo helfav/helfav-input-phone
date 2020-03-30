@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-import Input from "./input.tsx"
+import SmsForm from './components/smsForm';
 
 function App() {
 
 
   return (
     <div className="App">
-      <Input />
+      <SmsForm />
     </div>
   );
 }

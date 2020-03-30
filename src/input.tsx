@@ -1,25 +1,23 @@
 import React from 'react';
-// import Joi from '@hapi/joi';
+import Joi from '@hapi/joi';
 import PhoneInput from './shared/react-phone-input-2';
 // import 'react-phone-input-2/lib/style.css';
 
 interface IComponentState {
 	phone: string;
-	phoneNumberErrorMessage: string | null;
-	isPhoneNumberValid: boolean;
+	errors: any;
 }
 
 export default class Input extends React.Component<IComponentState> {
 	state: IComponentState = {
 		phone: '',
-		phoneNumberErrorMessage: null,
-		isPhoneNumberValid: true
+		errors: {}
 	};
 
-	// schema = {
-	// 	a: Joi.any().allow('a'),
-	// 	b: Joi.any().allow('b', 'B')
-	// };
+	schema = {
+		a: Joi.any().allow('a'),
+		b: Joi.any().allow('b', 'B')
+	};
 
 	handleChange = (phone: any) => {
 		this.setState({ phone });
