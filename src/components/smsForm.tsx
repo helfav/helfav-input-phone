@@ -13,13 +13,6 @@ export default class SmsForm extends React.Component<ISmsState> {
 		error: ''
 	};
 
-	validate = () => {
-		let error;
-		if (this.state.phone.trim === '+') {
-			error = 'Phone is required';
-		}
-		return error ? error : null;
-	};
 
 	onSubmit = (event?: React.FormEvent<HTMLFormElement>) => {
 		if (event) {
