@@ -17,7 +17,7 @@
     "@types/node-sass": "^4.11.0",
     "@types/react-text-mask": "^5.4.6",
     "lodash.startswith": "^4.2.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "primereact": "^4.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
